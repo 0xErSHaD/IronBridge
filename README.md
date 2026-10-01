@@ -1,19 +1,26 @@
 <div align="center">
 
-```
+<pre align="center">
+██╗██████╗  ██████╗ ███╗   ██╗██████╗ ██████╗ ██╗██████╗  ██████╗ ███████╗
+██║██╔══██╗██╔═══██╗████╗  ██║██╔══██╗██╔══██╗██║██╔══██╗██╔════╝ ██╔════╝
+██║██████╔╝██║   ██║██╔██╗ ██║██████╔╝██████╔╝██║██║  ██║██║  ███╗█████╗  
+██║██╔══██╗██║   ██║██║╚██╗██║██╔══██╗██╔══██╗██║██║  ██║██║   ██║██╔══╝  
+██║██║  ██║╚██████╔╝██║ ╚████║██████╔╝██║  ██║██║██████╔╝╚██████╔╝███████╗
+╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═════╝ ╚═╝  ╚═╝╚═╝╚═════╝  ╚═════╝ ╚══════╝
+</pre>
 
-██╗██████╗  ██████╗ ███╗   ██╗██████╗ ██████╗ ██╗██████╗  ██████╗ ███████╗
-██║██╔══██╗██╔═══██╗████╗  ██║██╔══██╗██╔══██╗██║██╔══██╗██╔════╝ ██╔════╝
-██║██████╔╝██║   ██║██╔██╗ ██║██████╔╝██████╔╝██║██║  ██║██║  ███╗█████╗  
-██║██╔══██╗██║   ██║██║╚██╗██║██╔══██╗██╔══██╗██║██║  ██║██║   ██║██╔══╝  
-██║██║  ██║╚██████╔╝██║ ╚████║██████╔╝██║  ██║██║██████╔╝╚██████╔╝███████╗
-╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═════╝ ╚═╝  ╚═╝╚═╝╚═════╝  ╚═════╝ ╚══════╝
-                                                                                                                                             
-```
+<p>
+  <img src="[https://img.shields.io/badge/Language-C%20%7C%20Python-blue](https://img.shields.io/badge/Language-C%20%7C%20Python-blue)" alt="Language" />
+  <img src="[https://img.shields.io/badge/Platform-Windows-0078D6](https://img.shields.io/badge/Platform-Windows-0078D6)" alt="Platform" />
+  <img src="[https://img.shields.io/badge/Crypto-AES--CFB%20%2B%20RSA-brightgreen](https://img.shields.io/badge/Crypto-AES--CFB%20%2B%20RSA-brightgreen)" alt="Crypto" />
+  <img src="[https://img.shields.io/badge/Architecture-Client--Server-orange](https://img.shields.io/badge/Architecture-Client--Server-orange)" alt="Architecture" />
+</p>
+
+<h3>🔒 Secure Emergency File Backup & Exfiltration Tool</h3>
+
+<p><i>IronBridge is a high-performance Client-Server security solution designed to safely encrypt and exfiltrate critical files directly to a remote server using native Windows APIs, Memory Mapping, and Hybrid Cryptography.</i></p>
 
 </div>
-
-*IronBridge is a high-performance Client-Server security solution designed to safely encrypt and exfiltrate critical files directly to a remote server using native Windows APIs, Memory Mapping, and Hybrid Cryptography.*
 
 ---
 
