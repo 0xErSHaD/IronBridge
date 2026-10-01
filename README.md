@@ -1,41 +1,42 @@
 <div align="center">
 
 ```
-██╗██████╗  ██████╗ ███╗   ██╗██████╗ ██████╗ ██╗██████╗  ██████╗ ███████╗
-██║██╔══██╗██╔═══██╗████╗  ██║██╔══██╗██╔══██╗██║██╔══██╗██╔════╝ ██╔════╝
-██║██████╔╝██║   ██║██╔██╗ ██║██████╔╝██████╔╝██║██║  ██║██║  ███╗█████╗  
-██║██╔══██╗██║   ██║██║╚██╗██║██╔══██╗██╔══██╗██║██║  ██║██║   ██║██╔══╝  
-██║██║  ██║╚██████╔╝██║ ╚████║██████╔╝██║  ██║██║██████╔╝╚██████╔╝███████╗
-╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═════╝ ╚═╝  ╚═╝╚═╝╚═════╝  ╚═════╝ ╚══════╝
-                                                                          
+██╗██████╗  ██████╗ ███╗   ██╗██████╗ ██████╗ ██╗██████╗  ██████╗ ███████╗
+██║██╔══██╗██╔═══██╗████╗  ██║██╔══██╗██╔══██╗██║██╔══██╗██╔════╝ ██╔════╝
+██║██████╔╝██║   ██║██╔██╗ ██║██████╔╝██████╔╝██║██║  ██║██║  ███╗█████╗  
+██║██╔══██╗██║   ██║██║╚██╗██║██╔══██╗██╔══██╗██║██║  ██║██║   ██║██╔══╝  
+██║██║  ██║╚██████╔╝██║ ╚████║██████╔╝██║  ██║██║██████╔╝╚██████╔╝███████╗
+╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═════╝ ╚═╝  ╚═╝╚═╝╚═════╝  ╚═════╝ ╚══════╝
+                                                                                                                                             
 ```
 
 </div>
 
 *IronBridge is a high-performance Client-Server security solution designed to safely encrypt and exfiltrate critical files directly to a remote server using native Windows APIs, Memory Mapping, and Hybrid Cryptography.*
+
 ---
 
 ## ⚙️ How It Works (Execution Flow)
 
 ```mermaid
 graph TD
-    subgraph Client ["💻 Client Side (Windows C CLI)"]
-        A[1. User Selects Target Path] --> B[2. Windows API Memory Mapping]
-        B --> C[3. Generate Random AES Key & IV]
-        C --> D[4. Encrypt AES Key with RSA Public Key]
-        D --> E[5. Chunk & Encrypt File Data]
-        E --> F[6. Send HTTP POST Requests via WinHTTP]
-    end
+    subgraph Client ["💻 Client Side (Windows C CLI)"]
+        A[1. User Selects Target Path] --> B[2. Windows API Memory Mapping]
+        B --> C[3. Generate Random AES Key & IV]
+        C --> D[4. Encrypt AES Key with RSA Public Key]
+        D --> E[5. Chunk & Encrypt File Data]
+        E --> F[6. Send HTTP POST Requests via WinHTTP]
+    end
 
-    subgraph Server ["🌐 Server Side (Python Flask)"]
-        F -->|HTTP Headers & Encrypted Chunks| G[7. Receive & Parse Request Headers]
-        G --> H[8. Decrypt AES Key via RSA Private Key]
-        H --> I[9. Decrypt Chunk using AES-CFB8]
-        I --> J[10. Reassemble & Save File to /uploads]
-    end
+    subgraph Server ["🌐 Server Side (Python Flask)"]
+        F -->|HTTP Headers & Encrypted Chunks| G[7. Receive & Parse Request Headers]
+        G --> H[8. Decrypt AES Key via RSA Private Key]
+        H --> I[9. Decrypt Chunk using AES-CFB8]
+        I --> J[10. Reassemble & Save File to /uploads]
+    end
 
-    style Client fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff
-    style Server fill:#1f2937,stroke:#10b981,stroke-width:2px,color:#fff
+    style Client fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff
+    style Server fill:#1f2937,stroke:#10b981,stroke-width:2px,color:#fff
 ```
 
 ---
@@ -101,7 +102,7 @@ IronBridge.exe
 **Sample Interactive Console Output:**
 ```text
 ========================================
-      IRON BRIDGE - Security Tool       
+      IRON BRIDGE - Security Tool       
 ========================================
 [+] Enter path (directory/file) (1)
 [+] Help (2)
@@ -116,7 +117,7 @@ Enter option(1/2/3) : 1
 [+] File successfully loaded into RAM!
 [+] AES Key successfully encrypted with RSA!
 [*] Sending Important.docx in 1 chunks...
-    -> Sending chunk 1/1 (154820 bytes)...
+    -> Sending chunk 1/1 (154820 bytes)...
 [+] Network handles closed safely.
 ```
 
