@@ -1,39 +1,56 @@
 <div align="center">
 
-```
+# 🌉 IronBridge
+
+```text
 ██╗██████╗  ██████╗ ███╗   ██╗██████╗ ██████╗ ██╗██████╗  ██████╗ ███████╗
 ██║██╔══██╗██╔═══██╗████╗  ██║██╔══██╗██╔══██╗██║██╔══██╗██╔════╝ ██╔════╝
 ██║██████╔╝██║   ██║██╔██╗ ██║██████╔╝██████╔╝██║██║  ██║██║  ███╗█████╗  
 ██║██╔══██╗██║   ██║██║╚██╗██║██╔══██╗██╔══██╗██║██║  ██║██║   ██║██╔══╝  
 ██║██║  ██║╚██████╔╝██║ ╚████║██████╔╝██║  ██║██║██████╔╝╚██████╔╝███████╗
 ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═════╝ ╚═╝  ╚═╝╚═╝╚═════╝  ╚═════╝ ╚══════╝
-                                                                                                                                             
 ```
 
-</div>
+![Language](https://img.shields.io/badge/Language-C%20%7C%20Python-blue)
+![Platform](https://img.shields.io/badge/Platform-Windows-0078D6)
+![Crypto](https://img.shields.io/badge/Crypto-AES--CFB%20%2B%20RSA-brightgreen)
+![Architecture](https://img.shields.io/badge/Architecture-Client--Server-orange)
 
-IronBridge is an advanced, high-performance Client-Server tool built for rapid file backup and emergency exfiltration. It leverages native Windows APIs for memory mapping and hybrid cryptography (AES-CFB + RSA) to securely transfer data to a remote Flask server.
+### 🔒 Secure Emergency File Backup & Exfiltration Tool
+
+*IronBridge is a high-performance Client-Server security solution designed to safely encrypt and exfiltrate critical files directly to a remote server using native Windows APIs, Memory Mapping, and Hybrid Cryptography.*
 
 ---
+
+</div>
 
 ## ⚙️ How It Works (Execution Flow)
 
 ```mermaid
 graph TD
     subgraph Client ["💻 Client Side (Windows C CLI)"]
-        A[1. User Selects Target Path] --> B[2. Windows API Memory Mapping]
-        B --> C[3. Generate Random AES Key & IV]
-        C --> D[4. Encrypt AES Key with RSA Public Key]
-        D --> E[5. Chunk & Encrypt File Data]
-        E --> F[6. Send HTTP POST Requests via WinHTTP]
+        direction TB
+        A["1. User Selects Target Path"]
+        B["2. Windows API Memory Mapping<br/><i>(Fast RAM-buffered read)</i>"]
+        C["3. Generate Random AES Key & IV<br/><i>(BCrypt RNG)</i>"]
+        D["4. Encrypt AES Key with RSA Public Key<br/><i>(PKCS#1 v1.5 Padding)</i>"]
+        E["5. Chunk & Encrypt File Data<br/><i>(AES-CFB / 10MB Chunks)</i>"]
+        F["6. Send HTTP POST Requests (WinHTTP)"]
+
+        A --> B --> C --> D --> E --> F
     end
 
     subgraph Server ["🌐 Server Side (Python Flask)"]
-        F -->|HTTP Headers & Encrypted Chunks| G[7. Receive & Parse Request Headers]
-        G --> H[8. Decrypt AES Key via RSA Private Key]
-        H --> I[9. Decrypt Chunk using AES-CFB8]
-        I --> J[10. Reassemble & Save File to /uploads]
+        direction TB
+        G["7. Receive & Parse Headers"]
+        H["8. Decrypt AES Key via RSA Private Key"]
+        I["9. Decrypt Chunk (AES-CFB8)"]
+        J["10. Reassemble & Save File to /uploads Directory"]
+
+        G --> H --> I --> J
     end
+
+    F -->|"<b>HTTP POST Headers:</b><br/>• X-File-Path<br/>• X-Enc-Key (RSA)<br/>• X-IV<br/>• X-Chunk-Index"| G
 
     style Client fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff
     style Server fill:#1f2937,stroke:#10b981,stroke-width:2px,color:#fff
@@ -50,7 +67,7 @@ graph TD
 
 ---
 
-## 🛠️️ Build & Setup
+## 🛠️ Build & Setup
 
 ### 1. Client (C / Windows)
 Requires a C compiler on Windows with access to system libraries (`bcrypt.lib`, `winhttp.lib`).
@@ -77,7 +94,7 @@ pip install -r requirements.txt
 
 ---
 
-## ⚠️️ Important Configurations
+## ⚠️ Important Configurations
 
 * **Server Endpoint:** The client connects to `127.0.0.1:5000` by default. Update the host IP in `Client/src/core.c` inside the `WinHttpConnect` function if running over a network.
 * **RSA Keypair:** The RSA public key is hardcoded in `Client/src/core.c` (`rsa_pub_blob`), and its matching private key must be located at `Server/private_key.pem`.
