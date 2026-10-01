@@ -1,7 +1,5 @@
 <div align="center">
 
-# 🌉 IronBridge
-
 ```text
 ██╗██████╗  ██████╗ ███╗   ██╗██████╗ ██████╗ ██╗██████╗  ██████╗ ███████╗
 ██║██╔══██╗██╔═══██╗████╗  ██║██╔══██╗██╔══██╗██║██╔══██╗██╔════╝ ██╔════╝
@@ -16,7 +14,6 @@
 ![Crypto](https://img.shields.io/badge/Crypto-AES--CFB%20%2B%20RSA-brightgreen)
 ![Architecture](https://img.shields.io/badge/Architecture-Client--Server-orange)
 
-### 🔒 Secure Emergency File Backup & Exfiltration Tool
 
 *IronBridge is a high-performance Client-Server security solution designed to safely encrypt and exfiltrate critical files directly to a remote server using native Windows APIs, Memory Mapping, and Hybrid Cryptography.*
 
