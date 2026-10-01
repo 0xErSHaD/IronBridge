@@ -13,7 +13,7 @@
 
 <h3>🛡️ Secure Emergency File Backup & Exfiltration Tool 🛡️</h3>
 
-<p><i>IronBridge is a high-performance Client-Server security solution designed to safely encrypt and exfiltrate critical files directly to a remote server using native Windows APIs, Memory Mapping, and Hybrid Cryptography.</i></p>
+<p><i>IronBridge is a high-performance Client-Server security solution designed to safely encrypt and exfiltrate critical files directly to a remote server.</i></p>
 
 </div>
 
