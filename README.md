@@ -19,31 +19,6 @@
 
 ---
 
-## ⚙️ How It Works (Execution Flow)
-
-```mermaid
-graph TD
-    subgraph Client ["💻 Client Side (Windows C CLI)"]
-        A[1. User Selects Target Path] --> B[2. Windows API Memory Mapping]
-        B --> C[3. Generate Random AES Key & IV]
-        C --> D[4. Encrypt AES Key with RSA Public Key]
-        D --> E[5. Chunk & Encrypt File Data]
-        E --> F[6. Send HTTP POST Requests via WinHTTP]
-    end
-
-    subgraph Server ["🌐 Server Side (Python Flask)"]
-        F -->|HTTP Headers & Encrypted Chunks| G[7. Receive & Parse Request Headers]
-        G --> H[8. Decrypt AES Key via RSA Private Key]
-        H --> I[9. Decrypt Chunk using AES-CFB8]
-        I --> J[10. Reassemble & Save File to /uploads]
-    end
-
-    style Client fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff
-    style Server fill:#1f2937,stroke:#10b981,stroke-width:2px,color:#fff
-```
-
----
-
 ## ✨ Key Features
 
 * **Hybrid Cryptography:** Combines fast symmetric encryption (AES-256 CFB) for file data with asymmetric encryption (RSA-2048) for secure key transfer.
